@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="Test Cases">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Test Case ID</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Category</Data></Cell>
+        <Cell><Data ss:Type="String">Expected Result</Data></Cell>
+        <Cell><Data ss:Type="String">Steps</Data></Cell>
+        <Cell><Data ss:Type="String">Test Data</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-001</Data></Cell>
+        <Cell><Data ss:Type="String">Successful Pre-Authorization for CT Scan</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful, approval ID stored</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule CT scan procedure
+Verify API call to insurance provider
+Verify pre-authorization process initiated
+Verify approval ID stored in patient record</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-002</Data></Cell>
+        <Cell><Data ss:Type="String">Successful Pre-Authorization for MRI</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful, approval ID stored</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule MRI procedure
+Verify API call to insurance provider
+Verify pre-authorization process initiated
+Verify approval ID stored in patient record</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-003</Data></Cell>
+        <Cell><Data ss:Type="String">Successful Pre-Authorization for Ultrasound</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful, approval ID stored</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule ultrasound procedure
+Verify API call to insurance provider
+Verify pre-authorization process initiated
+Verify approval ID stored in patient record</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-004</Data></Cell>
+        <Cell><Data ss:Type="String">No Pre-Authorization Required for Covered Procedure</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Procedure scheduled without pre-authorization</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule procedure covered by plan
+Verify no pre-authorization process initiated
+Verify procedure scheduled successfully</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-005</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-Authorization Fails for Uncovered Procedure</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization fails, procedure not scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule procedure not covered by plan
+Verify pre-authorization process fails
+Verify procedure not scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-006</Data></Cell>
+        <Cell><Data ss:Type="String">Insurance API Call Fails</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization fails, procedure not scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">Simulate insurance API call failure
+Schedule procedure
+Verify pre-authorization process fails
+Verify procedure not scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-007</Data></Cell>
+        <Cell><Data ss:Type="String">Patient Without Active Insurance Plan</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Procedure not scheduled, pre-authorization not initiated</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient without active insurance plan
+Schedule procedure
+Verify pre-authorization process not initiated
+Verify procedure not scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-008</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Procedure Scheduled Without Insurance Verification</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Procedure scheduled, but pre-authorization not initiated</Data></Cell>
+        <Cell><Data ss:Type="String">Schedule procedure without insurance verification
+Verify pre-authorization process not initiated</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-009</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Multiple Procedures Scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful for all procedures</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule multiple procedures
+Verify pre-authorization process initiated for each procedure</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-010</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Procedure Rescheduled</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization re-initiated for rescheduled procedure</Data></Cell>
+        <Cell><Data ss:Type="String">Schedule procedure
+Reschedule procedure
+Verify pre-authorization process re-initiated</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-011</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Insurance Plan Changes</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful based on new plan</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Change patient's insurance plan
+Schedule procedure
+Verify pre-authorization process initiated based on new plan</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-012</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Procedure Canceled</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization canceled for canceled procedure</Data></Cell>
+        <Cell><Data ss:Type="String">Schedule procedure
+Cancel procedure
+Verify pre-authorization process canceled</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-013</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Patient Record Updated</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful with updated record</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Update patient's record
+Schedule procedure
+Verify pre-authorization process initiated with updated record</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-014</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Multiple Patients Scheduled</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful for all patients</Data></Cell>
+        <Cell><Data ss:Type="String">Select multiple patients with active insurance plans
+Schedule procedures for each patient
+Verify pre-authorization process initiated for each patient</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-015</Data></Cell>
+        <Cell><Data ss:Type="String">Negative Scenario: Invalid Patient Data</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization fails due to invalid patient data</Data></Cell>
+        <Cell><Data ss:Type="String">Enter invalid patient data
+Schedule procedure
+Verify pre-authorization process fails</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-016</Data></Cell>
+        <Cell><Data ss:Type="String">Negative Scenario: Invalid Insurance Data</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization fails due to invalid insurance data</Data></Cell>
+        <Cell><Data ss:Type="String">Enter invalid insurance data
+Schedule procedure
+Verify pre-authorization process fails</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-017</Data></Cell>
+        <Cell><Data ss:Type="String">Negative Scenario: Procedure Not Covered</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization fails for uncovered procedure</Data></Cell>
+        <Cell><Data ss:Type="String">Schedule procedure not covered by insurance
+Verify pre-authorization process fails</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-018</Data></Cell>
+        <Cell><Data ss:Type="String">Positive Scenario: Pre-Authorization Successful</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization successful</Data></Cell>
+        <Cell><Data ss:Type="String">Select patient with active insurance plan
+Schedule procedure
+Verify pre-authorization successful</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-019</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Pre-Authorization Timeout</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization process retries after timeout</Data></Cell>
+        <Cell><Data ss:Type="String">Simulate pre-authorization timeout
+Schedule procedure
+Verify pre-authorization process retries</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-020</Data></Cell>
+        <Cell><Data ss:Type="String">Edge Case: Insurance API Maintenance</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Pre-authorization process fails during API maintenance</Data></Cell>
+        <Cell><Data ss:Type="String">Simulate insurance API maintenance
+Schedule procedure
+Verify pre-authorization process fails</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>
