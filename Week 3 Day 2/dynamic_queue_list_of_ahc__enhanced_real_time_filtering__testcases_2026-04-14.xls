@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+  <Worksheet ss:Name="Test Cases">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Test Case ID</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Category</Data></Cell>
+        <Cell><Data ss:Type="String">Expected Result</Data></Cell>
+        <Cell><Data ss:Type="String">Steps</Data></Cell>
+        <Cell><Data ss:Type="String">Test Data</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-001</Data></Cell>
+        <Cell><Data ss:Type="String">Auto-refresh of queue list within 30 seconds</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates within 30 seconds</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Observe queue list
+Change patient status in the system
+Wait for 30 seconds
+Verify queue list updates automatically</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-002</Data></Cell>
+        <Cell><Data ss:Type="String">Filter by Emergency priority</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Only critical patients are visible</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Apply 'Emergency' filter
+Verify only critical patients are visible</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-003</Data></Cell>
+        <Cell><Data ss:Type="String">Retain scroll position after auto-refresh</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Scroll position is retained</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Scroll to a specific position in the queue list
+Wait for auto-refresh
+Verify scroll position is retained</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-004</Data></Cell>
+        <Cell><Data ss:Type="String">Retain active filters after auto-refresh</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Filter is still applied</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Apply a filter
+Wait for auto-refresh
+Verify filter is still applied</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-005</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates when patient status changes to Waiting</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Change patient status to Waiting
+Wait for 30 seconds
+Verify queue list updates</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-006</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates when patient status changes to Under Examination</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Change patient status to Under Examination
+Wait for 30 seconds
+Verify queue list updates</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-007</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates when patient status changes to Discharged</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Change patient status to Discharged
+Wait for 30 seconds
+Verify queue list updates</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-008</Data></Cell>
+        <Cell><Data ss:Type="String">No auto-refresh when no patient status changes</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list does not update</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Wait for 30 seconds
+Verify queue list does not update</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-009</Data></Cell>
+        <Cell><Data ss:Type="String">Apply multiple filters</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates accordingly</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Apply 'Emergency' filter
+Apply 'Waiting' status filter
+Verify queue list updates accordingly</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-010</Data></Cell>
+        <Cell><Data ss:Type="String">Clear filters</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list returns to original state</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Apply a filter
+Clear filter
+Verify queue list returns to original state</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-011</Data></Cell>
+        <Cell><Data ss:Type="String">Auto-refresh with no patients in queue</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list remains empty</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Ensure queue list is empty
+Wait for auto-refresh
+Verify queue list remains empty</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-012</Data></Cell>
+        <Cell><Data ss:Type="String">Filter by Routine priority</Data></Cell>
+        <Cell><Data ss:Type="String">Positive</Data></Cell>
+        <Cell><Data ss:Type="String">Only routine patients are visible</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Apply 'Routine' filter
+Verify only routine patients are visible</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-013</Data></Cell>
+        <Cell><Data ss:Type="String">Invalid filter input</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Error message or no results</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Enter invalid filter input
+Verify error message or no results</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-014</Data></Cell>
+        <Cell><Data ss:Type="String">Auto-refresh failure</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Error message or queue list does not update</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Simulate auto-refresh failure
+Verify error message or queue list does not update</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-015</Data></Cell>
+        <Cell><Data ss:Type="String">Filter not applied after auto-refresh</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Filter is no longer applied</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Apply a filter
+Wait for auto-refresh
+Verify filter is no longer applied</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-016</Data></Cell>
+        <Cell><Data ss:Type="String">Scroll position not retained after filter change</Data></Cell>
+        <Cell><Data ss:Type="String">Negative</Data></Cell>
+        <Cell><Data ss:Type="String">Scroll position is not retained</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Scroll to a specific position in the queue list
+Apply a filter
+Verify scroll position is not retained</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-017</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list does not update for non-existent patient</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list does not update</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Change non-existent patient status
+Wait for 30 seconds
+Verify queue list does not update</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-018</Data></Cell>
+        <Cell><Data ss:Type="String">Multiple auto-refreshes in quick succession</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates correctly</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Trigger multiple auto-refreshes in quick succession
+Verify queue list updates correctly</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-019</Data></Cell>
+        <Cell><Data ss:Type="String">Filter applied on empty queue</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">No results or error message</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Ensure queue list is empty
+Apply a filter
+Verify no results or error message</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+      <Row>
+        <Cell><Data ss:Type="String">TC-020</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list update with multiple patient status changes</Data></Cell>
+        <Cell><Data ss:Type="String">Edge</Data></Cell>
+        <Cell><Data ss:Type="String">Queue list updates correctly</Data></Cell>
+        <Cell><Data ss:Type="String">Open doctor dashboard
+Change multiple patient statuses
+Wait for 30 seconds
+Verify queue list updates correctly</Data></Cell>
+        <Cell><Data ss:Type="String">N/A</Data></Cell>
+      </Row>
+    </Table>
+  </Worksheet>
+</Workbook>
