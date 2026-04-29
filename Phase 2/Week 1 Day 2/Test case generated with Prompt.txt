@@ -1,0 +1,66 @@
+Test Case ID: TC_HC_001
+Title: Verify successful insurance eligibility check and automatic pre‑authorization for a covered radiology test
+Preconditions: Billing coordinator is logged in; patient record exists with valid insurance policy number; radiology test (CT) selected requires pre‑authorization.
+Steps:
+1. Navigate to the patient’s scheduling page.
+2. Select “Schedule Test” and choose the CT procedure.
+3. Click “Confirm Scheduling”.
+4. System sends eligibility API request to insurance provider.
+5. System receives positive eligibility response indicating pre‑authorization required.
+6. System automatically sends pre‑authorization request to insurance API.
+7. System receives approval ID and approval date.
+8. System stores the authorization ID and approval date in the patient’s billing record.
+9. System displays scheduling confirmation to the coordinator.
+Expected Result: Test is scheduled; authorization ID and date are correctly saved; coordinator sees a success message confirming scheduling and pre‑authorization.
+
+Test Case ID: TC_HC_002
+Title: Notify coordinator and patient when radiology test is not covered by insurance
+Preconditions: Billing coordinator is logged in; patient record with valid insurance policy; radiology test (MRI) selected that is not covered.
+Steps:
+1. Navigate to the patient’s scheduling page.
+2. Select “Schedule Test” and choose the MRI procedure.
+3. Click “Confirm Scheduling”.
+4. System sends eligibility API request to insurance provider.
+5. System receives response indicating the test is not covered.
+6. System displays a notification to the coordinator stating “Test not covered”.
+7. System sends an automated email/SMS to the patient informing them of non‑coverage and presenting alternative payment options.
+Expected Result: Coordinator receives on‑screen notification; patient receives communication with alternative payment options; test is not scheduled.
+
+Test Case ID: TC_HC_003
+Title: Handle insurance API timeout during eligibility verification
+Preconditions: Billing coordinator is logged in; patient record with valid insurance policy; radiology test (Ultrasound) selected.
+Steps:
+1. Navigate to the patient’s scheduling page.
+2. Select “Schedule Test” and choose the Ultrasound procedure.
+3. Click “Confirm Scheduling”.
+4. System sends eligibility API request to insurance provider.
+5. Insurance API does not respond within the configured timeout period.
+6. System logs the timeout error.
+7. System displays an error message to the coordinator: “Unable to verify insurance at this time. Please try again later.”
+8. Coordinator chooses “Retry” or “Cancel”.
+Expected Result: System gracefully handles timeout, logs the error, and provides the coordinator with retry/cancel options without crashing.
+
+Test Case ID: TC_HC_004
+Title: Validate error handling for missing insurance information in patient record
+Preconditions: Billing coordinator is logged in; patient record exists but insurance policy number field is empty.
+Steps:
+1. Navigate to the patient’s scheduling page.
+2. Select “Schedule Test” and choose any radiology procedure (e.g., CT).
+3. Click “Confirm Scheduling”.
+4. System checks patient record for required insurance fields.
+5. System detects missing insurance policy number.
+6. System displays validation error: “Insurance information incomplete. Please update patient record before scheduling.”
+Expected Result: Scheduling is blocked; coordinator receives clear validation error; no API call is made.
+
+Test Case ID: TC_HC_005
+Title: Verify system behavior when maximum daily pre‑authorization limit is reached
+Preconditions: System configuration sets a daily limit of 100 pre‑authorizations; 100 pre‑authorizations have already been successfully processed today; billing coordinator is logged in; patient with valid insurance selects a new radiology test requiring pre‑authorization.
+Steps:
+1. Navigate to the patient’s scheduling page.
+2. Select “Schedule Test” and choose a CT procedure that requires pre‑authorization.
+3. Click “Confirm Scheduling”.
+4. System sends eligibility API request and receives response indicating pre‑authorization required.
+5. System checks current daily pre‑authorization count.
+6. System determines the daily limit has been reached.
+7. System displays error message: “Daily pre‑authorization limit reached. Please try again tomorrow or contact support.”
+Expected Result: System prevents additional pre‑authorization request, informs coordinator of the limit, and does not exceed configured daily threshold.

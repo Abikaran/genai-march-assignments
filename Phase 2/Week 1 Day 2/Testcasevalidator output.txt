@@ -1,0 +1,143 @@
+Issues:
+* Test cases lack coverage of negative and boundary scenarios such as invalid insurance numbers, API error responses (other than timeout), and covered tests that do not require pre‑authorization.
+* Expected results are sometimes vague (e.g., “Test is scheduled”) and do not specify verification of stored data, log entries, or exact UI messages.
+* Steps are not fully atomic; some combine multiple actions (e.g., “System sends eligibility API request and receives response”).
+* No validation of system behavior when the insurance API returns a malformed response.
+* Missing verification that no API call is made when required insurance data is absent.
+* No test for concurrency or duplicate pre‑authorization attempts.
+* Pre‑condition for daily limit test does not specify how the limit state is set up.
+* Notification content to patient is not validated (exact message, channel).
+
+Suggestions:
+* Split combined actions into separate, atomic steps for clarity and traceability.
+* Add explicit verification of log entries, stored authorization ID/date, and UI messages.
+* Include negative scenarios: invalid/missing insurance policy, API error (500), malformed response, and covered test without pre‑authorization requirement.
+* Add boundary test for daily pre‑authorization limit (e.g., just below limit, at limit, just above limit).
+* Validate that no external API call occurs when required insurance data is missing.
+* Verify patient communication content and delivery channel.
+* Document setup steps for system state (e.g., pre‑populate daily limit count).
+* Ensure each Expected Result includes precise outcomes and verification points.
+
+Improved Test Cases:
+Test Case ID: TC_HC_001  
+Title: Verify successful eligibility check and automatic pre‑authorization for a covered radiology test requiring pre‑authorization  
+Preconditions: Billing coordinator is logged in; patient record exists with a valid insurance policy number; CT procedure selected is configured to require pre‑authorization; insurance provider API is reachable and returns a positive eligibility response indicating pre‑authorization is required.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose the CT procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system sends an eligibility API request to the insurance provider.  
+6. Verify the system receives a positive eligibility response indicating pre‑authorization is required.  
+7. Verify the system automatically sends a pre‑authorization request to the insurance API.  
+8. Verify the system receives an approval ID and approval date in the response.  
+9. Verify the system stores the authorization ID and approval date in the patient’s billing record.  
+10. Verify the system logs the successful pre‑authorization event with timestamp and request IDs.  
+11. Verify the UI displays a success message: “Test scheduled successfully. Pre‑authorization ID {ID} recorded.”  
+Expected Result: The CT test is scheduled; the authorization ID and date are correctly saved in the billing record; logs contain the eligibility and pre‑authorization entries; the coordinator sees the success message with the ID displayed.
+
+Test Case ID: TC_HC_002  
+Title: Notify coordinator and patient when selected radiology test is not covered by insurance  
+Preconditions: Billing coordinator is logged in; patient record contains a valid insurance policy; MRI procedure selected is configured as not covered in the insurer’s plan; insurance API is reachable and returns a “not covered” response.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose the MRI procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system sends an eligibility API request.  
+6. Verify the system receives a “not covered” response.  
+7. Verify the UI displays an on‑screen notification: “Test not covered by insurance.”  
+8. Verify the system sends an email and SMS to the patient containing: (a) statement of non‑coverage, (b) alternative payment options, and (c) contact information for billing support.  
+9. Verify the email/SMS content matches the template and includes the patient’s name and test details.  
+10. Verify no scheduling record is created for the MRI test.  
+Expected Result: Coordinator receives the on‑screen “Test not covered” notification; patient receives correctly formatted email and SMS with alternative payment options; the MRI test is not scheduled in the system.
+
+Test Case ID: TC_HC_003  
+Title: Handle insurance eligibility API timeout gracefully  
+Preconditions: Billing coordinator is logged in; patient record has a valid insurance policy; Ultrasound procedure selected; insurance API is configured to not respond within the system’s timeout window (e.g., 10 seconds).  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose the Ultrasound procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system sends an eligibility API request.  
+6. Wait for the configured timeout period.  
+7. Verify the system logs a timeout error with request ID and timestamp.  
+8. Verify the UI displays error message: “Unable to verify insurance at this time. Please try again later.”  
+9. Verify the UI provides two actionable buttons: “Retry” and “Cancel”.  
+10. Select “Cancel” and verify the scheduling process is aborted without creating a test record.  
+Expected Result: System logs the timeout; coordinator sees the error message with Retry/Cancel options; after Cancel, no test is scheduled and no partial data is stored.
+
+Test Case ID: TC_HC_004  
+Title: Validate blocking of scheduling when required insurance information is missing  
+Preconditions: Billing coordinator is logged in; patient record exists but the insurance policy number field is empty; any radiology procedure (e.g., CT) is selected.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose a CT procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system checks the patient record for mandatory insurance fields.  
+6. Verify the system detects the missing insurance policy number.  
+7. Verify no eligibility API request is sent (confirm via network log).  
+8. Verify the UI displays validation error: “Insurance information incomplete. Please update patient record before scheduling.”  
+9. Verify the scheduling workflow is halted.  
+Expected Result: Scheduling is blocked; coordinator receives the exact validation error; no external API call occurs; patient record remains unchanged.
+
+Test Case ID: TC_HC_005  
+Title: Enforce daily pre‑authorization limit when limit is already reached  
+Preconditions: System configuration sets daily pre‑authorization limit to 100; 100 successful pre‑authorizations have been processed earlier on the same day (state verified in system dashboard); billing coordinator is logged in; patient record has valid insurance; CT procedure requiring pre‑authorization is selected.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose the CT procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system sends an eligibility API request and receives a response indicating pre‑authorization is required.  
+6. Verify the system checks the current daily pre‑authorization count.  
+7. Verify the count equals the configured limit (100).  
+8. Verify the system does NOT send a pre‑authorization request to the insurance API.  
+9. Verify the UI displays error message: “Daily pre‑authorization limit reached. Please try again tomorrow or contact support.”  
+Expected Result: No additional pre‑authorization request is made; coordinator sees the limit‑reached message; system daily count remains at 100; no new authorization ID is stored.
+
+Test Case ID: TC_HC_006  
+Title: Verify scheduling of covered radiology test that does NOT require pre‑authorization  
+Preconditions: Billing coordinator is logged in; patient record has valid insurance; X‑ray procedure is configured as covered and does not require pre‑authorization; insurance API returns eligibility response indicating “covered – no pre‑authorization needed”.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose the X‑ray procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system sends an eligibility API request.  
+6. Verify the system receives a response indicating coverage without pre‑authorization.  
+7. Verify the system does NOT send a pre‑authorization request.  
+8. Verify the system creates a scheduling record for the X‑ray test.  
+9. Verify the UI displays confirmation message: “Test scheduled successfully. No pre‑authorization required.”  
+Expected Result: X‑ray test is scheduled; no pre‑authorization request is made; billing record reflects scheduled test without an authorization ID; coordinator sees the success message.
+
+Test Case ID: TC_HC_007  
+Title: Handle invalid insurance policy number format in patient record  
+Preconditions: Billing coordinator is logged in; patient record contains an insurance policy number that fails format validation (e.g., contains letters in a numeric‑only field); any radiology procedure is selected.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose a CT procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system validates the insurance policy number format before making any API call.  
+6. Verify the UI displays error: “Invalid insurance policy number format. Please correct the patient record.”  
+7. Verify no eligibility API request is sent.  
+Expected Result: Scheduling is blocked; coordinator receives the exact format‑validation error; no external API call occurs; patient record remains unchanged.
+
+Test Case ID: TC_HC_008  
+Title: Handle insurance API returning a server error (HTTP 500) during eligibility verification  
+Preconditions: Billing coordinator is logged in; patient record has valid insurance; MRI procedure selected; insurance API is configured to return HTTP 500 error for the eligibility request.  
+Steps:  
+1. Navigate to the patient’s scheduling page.  
+2. Select “Schedule Test”.  
+3. Choose the MRI procedure.  
+4. Click “Confirm Scheduling”.  
+5. Verify the system sends an eligibility API request.  
+6. Verify the system receives an HTTP 500 response.  
+7. Verify the system logs the error with response code and payload.  
+8. Verify the UI displays error message: “Insurance verification failed due to a system error. Please contact support or retry later.”  
+9. Verify the UI provides “Retry” and “Cancel” options.  
+10. Choose “Cancel” and confirm that no scheduling record is created.  
+Expected Result: System logs the server error; coordinator sees the appropriate error message with Retry/Cancel; after Cancel, no test is scheduled and no partial data is stored.
