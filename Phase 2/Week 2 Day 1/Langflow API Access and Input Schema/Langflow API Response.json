@@ -1,0 +1,127 @@
+{
+    "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+    "outputs": [
+        {
+            "inputs": {
+                "input_value": "Generate the testcases for Payments with Debit and Credit cards"
+            },
+            "outputs": [
+                {
+                    "results": {
+                        "message": {
+                            "text_key": "text",
+                            "data": {
+                                "timestamp": "2026-05-04 10:03:28 UTC",
+                                "sender": "Machine",
+                                "sender_name": "AI",
+                                "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+                                "context_id": "",
+                                "text": "Test Case ID: TC_PC_001  \nTitle: Successful payment using a valid debit card within daily limit  \nPreconditions: User is logged in; user has a linked debit card with sufficient balance; daily transaction limit not exceeded.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select debit card as payment method.  \n3. Enter valid card number, expiry date, CVV, and billing address.  \n4. Enter payment amount within daily limit.  \n5. Complete 3‑D Secure authentication (OTP).  \n6. Submit the payment.  \nExpected Result: Payment is authorized, transaction is completed, and a confirmation receipt is displayed.\n\n---\n\nTest Case ID: TC_PC_002  \nTitle: Payment declined due to insufficient funds on debit card  \nPreconditions: User is logged in; debit card linked with balance lower than payment amount.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select debit card as payment method.  \n3. Enter valid card details.  \n4. Enter payment amount greater than available balance.  \n5. Submit the payment.  \nExpected Result: Payment is declined with an “Insufficient funds” error message; no transaction is recorded.\n\n---\n\nTest Case ID: TC_PC_003  \nTitle: Validation error for incorrectly formatted credit card number  \nPreconditions: User is logged in; credit card is not yet saved.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select credit card as payment method.  \n3. Enter an invalid card number (e.g., 1234 5678 9012).  \n4. Fill in other required fields (expiry, CVV, billing address).  \n5. Attempt to submit the payment.  \nExpected Result: System displays a validation error “Invalid card number” and prevents submission.\n\n---\n\nTest Case ID: TC_PC_004  \nTitle: Payment rejected for expired credit card  \nPreconditions: User is logged in; credit card on file has an expiry date in the past.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select credit card as payment method.  \n3. Choose the expired card from saved cards.  \n4. Enter payment amount within allowed limits.  \n5. Submit the payment.  \nExpected Result: Payment is rejected with an “Card expired” error; no charge is made.\n\n---\n\nTest Case ID: TC_PC_005  \nTitle: Payment failure due to payment gateway timeout (network error)  \nPreconditions: User is logged in; valid debit or credit card with sufficient funds.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select a card as payment method.  \n3. Enter valid card details and payment amount.  \n4. Simulate network latency causing the payment gateway to timeout.  \n5. Submit the payment.  \nExpected Result: System shows a “Payment processing error – please try again later” message; transaction is not recorded and can be retried.",
+                                "files": [],
+                                "error": false,
+                                "edit": false,
+                                "properties": {
+                                    "text_color": null,
+                                    "background_color": null,
+                                    "edited": false,
+                                    "source": {
+                                        "id": "GroqModel-gnwa6",
+                                        "display_name": "Groq",
+                                        "source": "openai/gpt-oss-120b"
+                                    },
+                                    "icon": null,
+                                    "allow_markdown": false,
+                                    "positive_feedback": null,
+                                    "state": "complete",
+                                    "targets": [],
+                                    "usage": {
+                                        "input_tokens": 576,
+                                        "output_tokens": 784,
+                                        "total_tokens": 1360
+                                    },
+                                    "build_duration": null
+                                },
+                                "category": "message",
+                                "content_blocks": [],
+                                "id": "caba5291-a8e1-422c-8db1-0f44e95e4b6f",
+                                "flow_id": "7c003806-69a9-4851-89ed-09219560586a",
+                                "session_metadata": null,
+                                "duration": null
+                            },
+                            "default_value": "",
+                            "text": "Test Case ID: TC_PC_001  \nTitle: Successful payment using a valid debit card within daily limit  \nPreconditions: User is logged in; user has a linked debit card with sufficient balance; daily transaction limit not exceeded.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select debit card as payment method.  \n3. Enter valid card number, expiry date, CVV, and billing address.  \n4. Enter payment amount within daily limit.  \n5. Complete 3‑D Secure authentication (OTP).  \n6. Submit the payment.  \nExpected Result: Payment is authorized, transaction is completed, and a confirmation receipt is displayed.\n\n---\n\nTest Case ID: TC_PC_002  \nTitle: Payment declined due to insufficient funds on debit card  \nPreconditions: User is logged in; debit card linked with balance lower than payment amount.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select debit card as payment method.  \n3. Enter valid card details.  \n4. Enter payment amount greater than available balance.  \n5. Submit the payment.  \nExpected Result: Payment is declined with an “Insufficient funds” error message; no transaction is recorded.\n\n---\n\nTest Case ID: TC_PC_003  \nTitle: Validation error for incorrectly formatted credit card number  \nPreconditions: User is logged in; credit card is not yet saved.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select credit card as payment method.  \n3. Enter an invalid card number (e.g., 1234 5678 9012).  \n4. Fill in other required fields (expiry, CVV, billing address).  \n5. Attempt to submit the payment.  \nExpected Result: System displays a validation error “Invalid card number” and prevents submission.\n\n---\n\nTest Case ID: TC_PC_004  \nTitle: Payment rejected for expired credit card  \nPreconditions: User is logged in; credit card on file has an expiry date in the past.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select credit card as payment method.  \n3. Choose the expired card from saved cards.  \n4. Enter payment amount within allowed limits.  \n5. Submit the payment.  \nExpected Result: Payment is rejected with an “Card expired” error; no charge is made.\n\n---\n\nTest Case ID: TC_PC_005  \nTitle: Payment failure due to payment gateway timeout (network error)  \nPreconditions: User is logged in; valid debit or credit card with sufficient funds.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select a card as payment method.  \n3. Enter valid card details and payment amount.  \n4. Simulate network latency causing the payment gateway to timeout.  \n5. Submit the payment.  \nExpected Result: System shows a “Payment processing error – please try again later” message; transaction is not recorded and can be retried.",
+                            "sender": "Machine",
+                            "sender_name": "AI",
+                            "files": [],
+                            "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+                            "context_id": "",
+                            "timestamp": "2026-05-04T10:03:28+00:00",
+                            "flow_id": "7c003806-69a9-4851-89ed-09219560586a",
+                            "error": false,
+                            "edit": false,
+                            "properties": {
+                                "text_color": null,
+                                "background_color": null,
+                                "edited": false,
+                                "source": {
+                                    "id": "GroqModel-gnwa6",
+                                    "display_name": "Groq",
+                                    "source": "openai/gpt-oss-120b"
+                                },
+                                "icon": null,
+                                "allow_markdown": false,
+                                "positive_feedback": null,
+                                "state": "complete",
+                                "targets": [],
+                                "usage": {
+                                    "input_tokens": 576,
+                                    "output_tokens": 784,
+                                    "total_tokens": 1360
+                                },
+                                "build_duration": null
+                            },
+                            "category": "message",
+                            "content_blocks": [],
+                            "duration": null,
+                            "session_metadata": null
+                        }
+                    },
+                    "artifacts": {
+                        "message": "Test Case ID: TC_PC_001  \n\nTitle: Successful payment using a valid debit card within daily limit  \n\nPreconditions: User is logged in; user has a linked debit card with sufficient balance; daily transaction limit not exceeded.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select debit card as payment method.  \n\n3. Enter valid card number, expiry date, CVV, and billing address.  \n\n4. Enter payment amount within daily limit.  \n\n5. Complete 3‑D Secure authentication (OTP).  \n\n6. Submit the payment.  \n\nExpected Result: Payment is authorized, transaction is completed, and a confirmation receipt is displayed.\n\n---\n\nTest Case ID: TC_PC_002  \n\nTitle: Payment declined due to insufficient funds on debit card  \n\nPreconditions: User is logged in; debit card linked with balance lower than payment amount.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select debit card as payment method.  \n\n3. Enter valid card details.  \n\n4. Enter payment amount greater than available balance.  \n\n5. Submit the payment.  \n\nExpected Result: Payment is declined with an “Insufficient funds” error message; no transaction is recorded.\n\n---\n\nTest Case ID: TC_PC_003  \n\nTitle: Validation error for incorrectly formatted credit card number  \n\nPreconditions: User is logged in; credit card is not yet saved.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select credit card as payment method.  \n\n3. Enter an invalid card number (e.g., 1234 5678 9012).  \n\n4. Fill in other required fields (expiry, CVV, billing address).  \n\n5. Attempt to submit the payment.  \n\nExpected Result: System displays a validation error “Invalid card number” and prevents submission.\n\n---\n\nTest Case ID: TC_PC_004  \n\nTitle: Payment rejected for expired credit card  \n\nPreconditions: User is logged in; credit card on file has an expiry date in the past.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select credit card as payment method.  \n\n3. Choose the expired card from saved cards.  \n\n4. Enter payment amount within allowed limits.  \n\n5. Submit the payment.  \n\nExpected Result: Payment is rejected with an “Card expired” error; no charge is made.\n\n---\n\nTest Case ID: TC_PC_005  \n\nTitle: Payment failure due to payment gateway timeout (network error)  \n\nPreconditions: User is logged in; valid debit or credit card with sufficient funds.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select a card as payment method.  \n\n3. Enter valid card details and payment amount.  \n\n4. Simulate network latency causing the payment gateway to timeout.  \n\n5. Submit the payment.  \n\nExpected Result: System shows a “Payment processing error – please try again later” message; transaction is not recorded and can be retried.",
+                        "sender": "Machine",
+                        "sender_name": "AI",
+                        "files": [],
+                        "type": "object"
+                    },
+                    "outputs": {
+                        "message": {
+                            "message": "Test Case ID: TC_PC_001  \nTitle: Successful payment using a valid debit card within daily limit  \nPreconditions: User is logged in; user has a linked debit card with sufficient balance; daily transaction limit not exceeded.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select debit card as payment method.  \n3. Enter valid card number, expiry date, CVV, and billing address.  \n4. Enter payment amount within daily limit.  \n5. Complete 3‑D Secure authentication (OTP).  \n6. Submit the payment.  \nExpected Result: Payment is authorized, transaction is completed, and a confirmation receipt is displayed.\n\n---\n\nTest Case ID: TC_PC_002  \nTitle: Payment declined due to insufficient funds on debit card  \nPreconditions: User is logged in; debit card linked with balance lower than payment amount.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select debit card as payment method.  \n3. Enter valid card details.  \n4. Enter payment amount greater than available balance.  \n5. Submit the payment.  \nExpected Result: Payment is declined with an “Insufficient funds” error message; no transaction is recorded.\n\n---\n\nTest Case ID: TC_PC_003  \nTitle: Validation error for incorrectly formatted credit card number  \nPreconditions: User is logged in; credit card is not yet saved.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select credit card as payment method.  \n3. Enter an invalid card number (e.g., 1234 5678 9012).  \n4. Fill in other required fields (expiry, CVV, billing address).  \n5. Attempt to submit the payment.  \nExpected Result: System displays a validation error “Invalid card number” and prevents submission.\n\n---\n\nTest Case ID: TC_PC_004  \nTitle: Payment rejected for expired credit card  \nPreconditions: User is logged in; credit card on file has an expiry date in the past.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select credit card as payment method.  \n3. Choose the expired card from saved cards.  \n4. Enter payment amount within allowed limits.  \n5. Submit the payment.  \nExpected Result: Payment is rejected with an “Card expired” error; no charge is made.\n\n---\n\nTest Case ID: TC_PC_005  \nTitle: Payment failure due to payment gateway timeout (network error)  \nPreconditions: User is logged in; valid debit or credit card with sufficient funds.  \nSteps:  \n1. Navigate to the payment page.  \n2. Select a card as payment method.  \n3. Enter valid card details and payment amount.  \n4. Simulate network latency causing the payment gateway to timeout.  \n5. Submit the payment.  \nExpected Result: System shows a “Payment processing error – please try again later” message; transaction is not recorded and can be retried.",
+                            "type": "text"
+                        }
+                    },
+                    "logs": {
+                        "message": []
+                    },
+                    "messages": [
+                        {
+                            "message": "Test Case ID: TC_PC_001  \n\nTitle: Successful payment using a valid debit card within daily limit  \n\nPreconditions: User is logged in; user has a linked debit card with sufficient balance; daily transaction limit not exceeded.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select debit card as payment method.  \n\n3. Enter valid card number, expiry date, CVV, and billing address.  \n\n4. Enter payment amount within daily limit.  \n\n5. Complete 3‑D Secure authentication (OTP).  \n\n6. Submit the payment.  \n\nExpected Result: Payment is authorized, transaction is completed, and a confirmation receipt is displayed.\n\n---\n\nTest Case ID: TC_PC_002  \n\nTitle: Payment declined due to insufficient funds on debit card  \n\nPreconditions: User is logged in; debit card linked with balance lower than payment amount.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select debit card as payment method.  \n\n3. Enter valid card details.  \n\n4. Enter payment amount greater than available balance.  \n\n5. Submit the payment.  \n\nExpected Result: Payment is declined with an “Insufficient funds” error message; no transaction is recorded.\n\n---\n\nTest Case ID: TC_PC_003  \n\nTitle: Validation error for incorrectly formatted credit card number  \n\nPreconditions: User is logged in; credit card is not yet saved.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select credit card as payment method.  \n\n3. Enter an invalid card number (e.g., 1234 5678 9012).  \n\n4. Fill in other required fields (expiry, CVV, billing address).  \n\n5. Attempt to submit the payment.  \n\nExpected Result: System displays a validation error “Invalid card number” and prevents submission.\n\n---\n\nTest Case ID: TC_PC_004  \n\nTitle: Payment rejected for expired credit card  \n\nPreconditions: User is logged in; credit card on file has an expiry date in the past.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select credit card as payment method.  \n\n3. Choose the expired card from saved cards.  \n\n4. Enter payment amount within allowed limits.  \n\n5. Submit the payment.  \n\nExpected Result: Payment is rejected with an “Card expired” error; no charge is made.\n\n---\n\nTest Case ID: TC_PC_005  \n\nTitle: Payment failure due to payment gateway timeout (network error)  \n\nPreconditions: User is logged in; valid debit or credit card with sufficient funds.  \n\nSteps:  \n\n1. Navigate to the payment page.  \n\n2. Select a card as payment method.  \n\n3. Enter valid card details and payment amount.  \n\n4. Simulate network latency causing the payment gateway to timeout.  \n\n5. Submit the payment.  \n\nExpected Result: System shows a “Payment processing error – please try again later” message; transaction is not recorded and can be retried.",
+                            "sender": "Machine",
+                            "sender_name": "AI",
+                            "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+                            "stream_url": null,
+                            "component_id": "ChatOutput-jljbl",
+                            "files": [],
+                            "type": "text"
+                        }
+                    ],
+                    "timedelta": null,
+                    "duration": null,
+                    "component_display_name": "Chat Output",
+                    "component_id": "ChatOutput-jljbl",
+                    "used_frozen_result": false,
+                    "token_usage": null
+                }
+            ]
+        }
+    ]
+}

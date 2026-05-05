@@ -1,0 +1,109 @@
+
+            <html>
+            <head>
+                <title>Message Report</title>
+            </head>
+            <body>
+                <h2>Message</h2>
+                <p>```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TypeScript Code Review – Playwright Cucumber Steps</title>
+    <style>
+        body {font-family: Arial, sans-serif; margin: 20px; line-height: 1.6;}
+        h1 {color: #2c3e50;}
+        table {border-collapse: collapse; width: 100%; margin-top: 10px;}
+        th, td {border: 1px solid #ddd; padding: 8px; text-align: left;}
+        th {background-color: #f4f4f4;}
+        .score {font-weight: bold; color: #2980b9;}
+        .overall {font-size: 1.2em; margin-top: 20px;}
+        .improvements, .summary {margin-top: 15px;}
+        ul {margin: 0; padding-left: 20px;}
+    </style>
+</head>
+<body>
+    <h1>Code Review Summary</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+                <th>Score (out of 20)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Code Readability</td>
+                <td>
+                    Naming is clear and consistent (e.g., <code>browser</code>, <code>context</code>, <code>page</code>).<br>
+                    Indentation and line‑breaks are uniform.<br>
+                    Lacks inline comments or JSDoc documentation that explain intent or edge‑case handling.
+                </td>
+                <td class="score">14</td>
+            </tr>
+            <tr>
+                <td>Code Efficiency</td>
+                <td>
+                    No unnecessary loops or heavy computations – the steps are simple UI actions.<br>
+                    Browser is launched once per test suite (good), but using a global page object can cause hidden state leaks between scenarios.
+                </td>
+                <td class="score">16</td>
+            </tr>
+            <tr>
+                <td>Error Handling</td>
+                <td>
+                    All async calls are awaited, but there is no explicit <code>try / catch</code> or custom error messages.<br>
+                    Failures will be reported by the test runner, yet graceful recovery or richer diagnostics are missing.
+                </td>
+                <td class="score">8</td>
+            </tr>
+            <tr>
+                <td>Maintainability</td>
+                <td>
+                    Steps are defined in a single file with global state – makes future extensions (e.g., parallel scenarios, different browsers) harder.<br>
+                    No modular helpers or page‑object abstraction; duplication would increase quickly as the test suite grows.
+                </td>
+                <td class="score">12</td>
+            </tr>
+            <tr>
+                <td>Best Practices &amp; Standards</td>
+                <td>
+                    Uses TypeScript typings for step parameters, but could benefit from stricter typing (e.g., explicit <code>Page</code> type on the global variable).<br>
+                    Does not leverage Playwright fixtures, SOLID principles, or DRY (selectors are repeated).<br>
+                    Linting/formatter rules are not evident; missing JSDoc and interface definitions for shared data.
+                </td>
+                <td class="score">10</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="overall"><strong>Overall Score: 60 / 100</strong></div>
+
+    <div class="improvements">
+        <h2>Improvement Areas</h2>
+        <ul>
+            <li><strong>Add documentation:</strong> Use JSDoc comments for each step definition and describe expected behaviour.</li>
+            <li><strong>Introduce a Page‑Object Model (POM):</strong> Encapsulate selectors and actions (login, navigation, verification) in reusable classes.</li>
+            <li><strong>Leverage Playwright test fixtures:</strong> Pass <code>page</code> via fixture instead of global variables to improve isolation and parallel execution.</li>
+            <li><strong>Implement error handling:</strong> Wrap critical actions in <code>try / catch</code> blocks and log meaningful messages (e.g., “Failed to locate username field”).</li>
+            <li><strong>Enforce linting &amp; strict TS config:</strong> Enable <code>strict</code>, <code>noImplicitAny</code>, and use ESLint/Prettier to keep code style consistent.</li>
+            <li><strong>Parameterise environment data:</strong> Move URLs, credentials, and time‑outs to a configuration file or environment variables.</li>
+            <li><strong>Reduce selector duplication:</strong> Store reusable locators (e.g., username, password, login button) in constants or the POM.</li>
+        </ul>
+    </div>
+
+    <div class="summary">
+        <h2>Summary</h2>
+        <p>
+            The test steps are functional and demonstrate a clear flow for logging into the application. However, the current implementation is a minimal prototype rather than production‑ready code. By introducing a page‑object abstraction, improving error handling, adopting Playwright fixtures, and tightening TypeScript strictness, the suite will become more robust, maintainable, and scalable for larger test portfolios.
+        </p>
+    </div>
+</body>
+</html>
+```</p>
+            </body>
+            </html>
+            

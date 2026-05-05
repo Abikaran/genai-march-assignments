@@ -1,0 +1,127 @@
+{
+    "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+    "outputs": [
+        {
+            "inputs": {
+                "input_value": "Generate the test cases for verifying Transactions failures"
+            },
+            "outputs": [
+                {
+                    "results": {
+                        "message": {
+                            "text_key": "text",
+                            "data": {
+                                "timestamp": "2026-05-05 04:59:12 UTC",
+                                "sender": "Machine",
+                                "sender_name": "AI",
+                                "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+                                "context_id": "",
+                                "text": "Test Case ID: TC_TX_001  \nTitle: Verify transaction failure when account balance is insufficient  \nPreconditions: User is logged in; source account balance is $50; daily transfer limit not exceeded; valid beneficiary details entered.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account with $50 balance.  \n3. Enter a transfer amount of $100.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: Transaction is rejected with an error message “Insufficient funds”; no debit is made to the source account.\n\nTest Case ID: TC_TX_002  \nTitle: Verify transaction failure when amount exceeds daily transfer limit  \nPreconditions: User is logged in; daily transfer limit is $5,000; source account has sufficient balance; valid beneficiary details entered.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a transfer amount of $6,000.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: Transaction is blocked with an error message “Transfer amount exceeds daily limit”; no funds are deducted.\n\nTest Case ID: TC_TX_003  \nTitle: Verify transaction failure with invalid beneficiary account number  \nPreconditions: User is logged in; source account has sufficient balance; daily limit not exceeded.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a valid transfer amount (e.g., $200).  \n4. Input an invalid beneficiary account number (e.g., wrong checksum).  \n5. Click “Submit”.  \nExpected Result: System validates the beneficiary details and displays “Invalid beneficiary account number”; transaction is not processed.\n\nTest Case ID: TC_TX_004  \nTitle: Verify transaction failure when OTP is incorrect or times out  \nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; OTP service is operational.  \nSteps:  \n1. Initiate a fund transfer of $300 to a valid beneficiary.  \n2. Click “Submit” to trigger OTP generation.  \n3. Wait for OTP expiration (e.g., 2 minutes) or enter an incorrect OTP.  \n4. Click “Confirm”.  \nExpected Result: Transaction is aborted with an error message “OTP verification failed or expired”; no funds are transferred.\n\nTest Case ID: TC_TX_005  \nTitle: Verify transaction failure due to backend service outage  \nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; simulated backend service (e.g., payment gateway) is down.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a transfer amount of $150.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: System displays a generic error “Transaction could not be completed – service unavailable”; transaction is not recorded and no debit occurs.",
+                                "files": [],
+                                "error": false,
+                                "edit": false,
+                                "properties": {
+                                    "text_color": null,
+                                    "background_color": null,
+                                    "edited": false,
+                                    "source": {
+                                        "id": "GroqModel-gnwa6",
+                                        "display_name": "Groq",
+                                        "source": "openai/gpt-oss-120b"
+                                    },
+                                    "icon": null,
+                                    "allow_markdown": false,
+                                    "positive_feedback": null,
+                                    "state": "complete",
+                                    "targets": [],
+                                    "usage": {
+                                        "input_tokens": 577,
+                                        "output_tokens": 868,
+                                        "total_tokens": 1445
+                                    },
+                                    "build_duration": null
+                                },
+                                "category": "message",
+                                "content_blocks": [],
+                                "id": "9d5857fd-d472-42a4-9f11-de6159433934",
+                                "flow_id": "7c003806-69a9-4851-89ed-09219560586a",
+                                "session_metadata": null,
+                                "duration": null
+                            },
+                            "default_value": "",
+                            "text": "Test Case ID: TC_TX_001  \nTitle: Verify transaction failure when account balance is insufficient  \nPreconditions: User is logged in; source account balance is $50; daily transfer limit not exceeded; valid beneficiary details entered.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account with $50 balance.  \n3. Enter a transfer amount of $100.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: Transaction is rejected with an error message “Insufficient funds”; no debit is made to the source account.\n\nTest Case ID: TC_TX_002  \nTitle: Verify transaction failure when amount exceeds daily transfer limit  \nPreconditions: User is logged in; daily transfer limit is $5,000; source account has sufficient balance; valid beneficiary details entered.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a transfer amount of $6,000.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: Transaction is blocked with an error message “Transfer amount exceeds daily limit”; no funds are deducted.\n\nTest Case ID: TC_TX_003  \nTitle: Verify transaction failure with invalid beneficiary account number  \nPreconditions: User is logged in; source account has sufficient balance; daily limit not exceeded.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a valid transfer amount (e.g., $200).  \n4. Input an invalid beneficiary account number (e.g., wrong checksum).  \n5. Click “Submit”.  \nExpected Result: System validates the beneficiary details and displays “Invalid beneficiary account number”; transaction is not processed.\n\nTest Case ID: TC_TX_004  \nTitle: Verify transaction failure when OTP is incorrect or times out  \nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; OTP service is operational.  \nSteps:  \n1. Initiate a fund transfer of $300 to a valid beneficiary.  \n2. Click “Submit” to trigger OTP generation.  \n3. Wait for OTP expiration (e.g., 2 minutes) or enter an incorrect OTP.  \n4. Click “Confirm”.  \nExpected Result: Transaction is aborted with an error message “OTP verification failed or expired”; no funds are transferred.\n\nTest Case ID: TC_TX_005  \nTitle: Verify transaction failure due to backend service outage  \nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; simulated backend service (e.g., payment gateway) is down.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a transfer amount of $150.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: System displays a generic error “Transaction could not be completed – service unavailable”; transaction is not recorded and no debit occurs.",
+                            "sender": "Machine",
+                            "sender_name": "AI",
+                            "files": [],
+                            "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+                            "context_id": "",
+                            "timestamp": "2026-05-05T04:59:12+00:00",
+                            "flow_id": "7c003806-69a9-4851-89ed-09219560586a",
+                            "error": false,
+                            "edit": false,
+                            "properties": {
+                                "text_color": null,
+                                "background_color": null,
+                                "edited": false,
+                                "source": {
+                                    "id": "GroqModel-gnwa6",
+                                    "display_name": "Groq",
+                                    "source": "openai/gpt-oss-120b"
+                                },
+                                "icon": null,
+                                "allow_markdown": false,
+                                "positive_feedback": null,
+                                "state": "complete",
+                                "targets": [],
+                                "usage": {
+                                    "input_tokens": 577,
+                                    "output_tokens": 868,
+                                    "total_tokens": 1445
+                                },
+                                "build_duration": null
+                            },
+                            "category": "message",
+                            "content_blocks": [],
+                            "duration": null,
+                            "session_metadata": null
+                        }
+                    },
+                    "artifacts": {
+                        "message": "Test Case ID: TC_TX_001  \n\nTitle: Verify transaction failure when account balance is insufficient  \n\nPreconditions: User is logged in; source account balance is $50; daily transfer limit not exceeded; valid beneficiary details entered.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account with $50 balance.  \n\n3. Enter a transfer amount of $100.  \n\n4. Enter valid beneficiary account information.  \n\n5. Click “Submit”.  \n\nExpected Result: Transaction is rejected with an error message “Insufficient funds”; no debit is made to the source account.\n\nTest Case ID: TC_TX_002  \n\nTitle: Verify transaction failure when amount exceeds daily transfer limit  \n\nPreconditions: User is logged in; daily transfer limit is $5,000; source account has sufficient balance; valid beneficiary details entered.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account.  \n\n3. Enter a transfer amount of $6,000.  \n\n4. Enter valid beneficiary account information.  \n\n5. Click “Submit”.  \n\nExpected Result: Transaction is blocked with an error message “Transfer amount exceeds daily limit”; no funds are deducted.\n\nTest Case ID: TC_TX_003  \n\nTitle: Verify transaction failure with invalid beneficiary account number  \n\nPreconditions: User is logged in; source account has sufficient balance; daily limit not exceeded.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account.  \n\n3. Enter a valid transfer amount (e.g., $200).  \n\n4. Input an invalid beneficiary account number (e.g., wrong checksum).  \n\n5. Click “Submit”.  \n\nExpected Result: System validates the beneficiary details and displays “Invalid beneficiary account number”; transaction is not processed.\n\nTest Case ID: TC_TX_004  \n\nTitle: Verify transaction failure when OTP is incorrect or times out  \n\nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; OTP service is operational.  \n\nSteps:  \n\n1. Initiate a fund transfer of $300 to a valid beneficiary.  \n\n2. Click “Submit” to trigger OTP generation.  \n\n3. Wait for OTP expiration (e.g., 2 minutes) or enter an incorrect OTP.  \n\n4. Click “Confirm”.  \n\nExpected Result: Transaction is aborted with an error message “OTP verification failed or expired”; no funds are transferred.\n\nTest Case ID: TC_TX_005  \n\nTitle: Verify transaction failure due to backend service outage  \n\nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; simulated backend service (e.g., payment gateway) is down.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account.  \n\n3. Enter a transfer amount of $150.  \n\n4. Enter valid beneficiary account information.  \n\n5. Click “Submit”.  \n\nExpected Result: System displays a generic error “Transaction could not be completed – service unavailable”; transaction is not recorded and no debit occurs.",
+                        "sender": "Machine",
+                        "sender_name": "AI",
+                        "files": [],
+                        "type": "object"
+                    },
+                    "outputs": {
+                        "message": {
+                            "message": "Test Case ID: TC_TX_001  \nTitle: Verify transaction failure when account balance is insufficient  \nPreconditions: User is logged in; source account balance is $50; daily transfer limit not exceeded; valid beneficiary details entered.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account with $50 balance.  \n3. Enter a transfer amount of $100.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: Transaction is rejected with an error message “Insufficient funds”; no debit is made to the source account.\n\nTest Case ID: TC_TX_002  \nTitle: Verify transaction failure when amount exceeds daily transfer limit  \nPreconditions: User is logged in; daily transfer limit is $5,000; source account has sufficient balance; valid beneficiary details entered.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a transfer amount of $6,000.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: Transaction is blocked with an error message “Transfer amount exceeds daily limit”; no funds are deducted.\n\nTest Case ID: TC_TX_003  \nTitle: Verify transaction failure with invalid beneficiary account number  \nPreconditions: User is logged in; source account has sufficient balance; daily limit not exceeded.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a valid transfer amount (e.g., $200).  \n4. Input an invalid beneficiary account number (e.g., wrong checksum).  \n5. Click “Submit”.  \nExpected Result: System validates the beneficiary details and displays “Invalid beneficiary account number”; transaction is not processed.\n\nTest Case ID: TC_TX_004  \nTitle: Verify transaction failure when OTP is incorrect or times out  \nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; OTP service is operational.  \nSteps:  \n1. Initiate a fund transfer of $300 to a valid beneficiary.  \n2. Click “Submit” to trigger OTP generation.  \n3. Wait for OTP expiration (e.g., 2 minutes) or enter an incorrect OTP.  \n4. Click “Confirm”.  \nExpected Result: Transaction is aborted with an error message “OTP verification failed or expired”; no funds are transferred.\n\nTest Case ID: TC_TX_005  \nTitle: Verify transaction failure due to backend service outage  \nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; simulated backend service (e.g., payment gateway) is down.  \nSteps:  \n1. Navigate to the “Transfer Funds” page.  \n2. Select the source account.  \n3. Enter a transfer amount of $150.  \n4. Enter valid beneficiary account information.  \n5. Click “Submit”.  \nExpected Result: System displays a generic error “Transaction could not be completed – service unavailable”; transaction is not recorded and no debit occurs.",
+                            "type": "text"
+                        }
+                    },
+                    "logs": {
+                        "message": []
+                    },
+                    "messages": [
+                        {
+                            "message": "Test Case ID: TC_TX_001  \n\nTitle: Verify transaction failure when account balance is insufficient  \n\nPreconditions: User is logged in; source account balance is $50; daily transfer limit not exceeded; valid beneficiary details entered.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account with $50 balance.  \n\n3. Enter a transfer amount of $100.  \n\n4. Enter valid beneficiary account information.  \n\n5. Click “Submit”.  \n\nExpected Result: Transaction is rejected with an error message “Insufficient funds”; no debit is made to the source account.\n\nTest Case ID: TC_TX_002  \n\nTitle: Verify transaction failure when amount exceeds daily transfer limit  \n\nPreconditions: User is logged in; daily transfer limit is $5,000; source account has sufficient balance; valid beneficiary details entered.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account.  \n\n3. Enter a transfer amount of $6,000.  \n\n4. Enter valid beneficiary account information.  \n\n5. Click “Submit”.  \n\nExpected Result: Transaction is blocked with an error message “Transfer amount exceeds daily limit”; no funds are deducted.\n\nTest Case ID: TC_TX_003  \n\nTitle: Verify transaction failure with invalid beneficiary account number  \n\nPreconditions: User is logged in; source account has sufficient balance; daily limit not exceeded.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account.  \n\n3. Enter a valid transfer amount (e.g., $200).  \n\n4. Input an invalid beneficiary account number (e.g., wrong checksum).  \n\n5. Click “Submit”.  \n\nExpected Result: System validates the beneficiary details and displays “Invalid beneficiary account number”; transaction is not processed.\n\nTest Case ID: TC_TX_004  \n\nTitle: Verify transaction failure when OTP is incorrect or times out  \n\nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; OTP service is operational.  \n\nSteps:  \n\n1. Initiate a fund transfer of $300 to a valid beneficiary.  \n\n2. Click “Submit” to trigger OTP generation.  \n\n3. Wait for OTP expiration (e.g., 2 minutes) or enter an incorrect OTP.  \n\n4. Click “Confirm”.  \n\nExpected Result: Transaction is aborted with an error message “OTP verification failed or expired”; no funds are transferred.\n\nTest Case ID: TC_TX_005  \n\nTitle: Verify transaction failure due to backend service outage  \n\nPreconditions: User is logged in; source account has sufficient balance; valid beneficiary details entered; simulated backend service (e.g., payment gateway) is down.  \n\nSteps:  \n\n1. Navigate to the “Transfer Funds” page.  \n\n2. Select the source account.  \n\n3. Enter a transfer amount of $150.  \n\n4. Enter valid beneficiary account information.  \n\n5. Click “Submit”.  \n\nExpected Result: System displays a generic error “Transaction could not be completed – service unavailable”; transaction is not recorded and no debit occurs.",
+                            "sender": "Machine",
+                            "sender_name": "AI",
+                            "session_id": "7c003806-69a9-4851-89ed-09219560586a",
+                            "stream_url": null,
+                            "component_id": "ChatOutput-TPHXa",
+                            "files": [],
+                            "type": "text"
+                        }
+                    ],
+                    "timedelta": null,
+                    "duration": null,
+                    "component_display_name": "Chat Output",
+                    "component_id": "ChatOutput-TPHXa",
+                    "used_frozen_result": false,
+                    "token_usage": null
+                }
+            ]
+        }
+    ]
+}
