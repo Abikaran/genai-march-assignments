@@ -1,0 +1,51 @@
+{
+  "execution_summary": {
+    "total_tests": 12,
+    "passed": 7,
+    "failed": 5,
+    "execution_time": "18m 22s",
+    "environment": "QA"
+  },
+  "failed_tests": [
+    {
+      "test_name": "test_login_with_valid_user",
+      "module": "Authentication",
+      "status": "FAILED",
+      "error_type": "TimeoutException",
+      "error_message": "Element not clickable after 30 seconds",
+      "timestamp": "2026-05-06T10:15:00"
+    },
+    {
+      "test_name": "test_checkout_payment",
+      "module": "Checkout",
+      "status": "FAILED",
+      "error_type": "AssertionError",
+      "error_message": "Expected payment success message not displayed",
+      "timestamp": "2026-05-06T10:18:00"
+    },
+    {
+      "test_name": "test_search_product",
+      "module": "Search",
+      "status": "FAILED",
+      "error_type": "NoSuchElementException",
+      "error_message": "Search textbox locator not found",
+      "timestamp": "2026-05-06T10:22:00"
+    },
+    {
+      "test_name": "test_user_profile_update",
+      "module": "Profile",
+      "status": "FAILED",
+      "error_type": "APIError",
+      "error_message": "500 Internal Server Error from profile API",
+      "timestamp": "2026-05-06T10:25:00"
+    },
+    {
+      "test_name": "test_add_to_cart",
+      "module": "Cart",
+      "status": "FAILED",
+      "error_type": "FlakyFailure",
+      "error_message": "Test passed on retry attempt",
+      "timestamp": "2026-05-06T10:28:00"
+    }
+  ]
+}

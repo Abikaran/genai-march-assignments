@@ -1,0 +1,193 @@
+
+            <html>
+            <head>
+                <title>Message Report</title>
+            </head>
+            <body>
+                <h2>Message</h2>
+                <p><!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1, h2, h3 {
+  color: #00698f;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.priority-high {
+  color: red;
+}
+
+.priority-medium {
+  color: orange;
+}
+
+.priority-low {
+  color: green;
+}
+
+</style>
+</head>
+<body>
+<h1>Test Execution Summary</h1>
+<table>
+  <tr>
+    <th>Total Tests</th>
+    <th>Passed Tests</th>
+    <th>Failed Tests</th>
+    <th>Execution Time</th>
+    <th>Environment</th>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>7</td>
+    <td>5</td>
+    <td>18m 22s</td>
+    <td>QA</td>
+  </tr>
+</table>
+<p>Execution Stability Overview: The test execution has a moderate level of stability concerns, with 5 out of 12 tests failing. The reliability risks are moderate, with some tests experiencing timeout exceptions and assertion errors.</p>
+
+<h2>Failure Classification</h2>
+<table>
+  <tr>
+    <th>Failure Type</th>
+    <th>Count</th>
+    <th>Test Names</th>
+  </tr>
+  <tr>
+    <td>UI Issue</td>
+    <td>2</td>
+    <td>test_login_with_valid_user, test_search_product</td>
+  </tr>
+  <tr>
+    <td>Assertion/Data Issue</td>
+    <td>1</td>
+    <td>test_checkout_payment</td>
+  </tr>
+  <tr>
+    <td>API Issue</td>
+    <td>1</td>
+    <td>test_user_profile_update</td>
+  </tr>
+  <tr>
+    <td>Flaky Test</td>
+    <td>1</td>
+    <td>test_add_to_cart</td>
+  </tr>
+</table>
+
+<h2>Root Cause Analysis</h2>
+<div class="card">
+  <div class="card-header">
+    <h3>test_login_with_valid_user</h3>
+  </div>
+  <p>Failure Type: UI Synchronization Issue</p>
+  <p>Root Cause: Element not clickable within timeout period</p>
+  <p>Evidence from Logs: Expected condition failed: waiting for element to be clickable</p>
+  <p>Recommendation: Add explicit wait strategy</p>
+  <p>Priority: <span class="priority-high">HIGH</span></p>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h3>test_checkout_payment</h3>
+  </div>
+  <p>Failure Type: Assertion Failure</p>
+  <p>Root Cause: Expected payment success message not displayed</p>
+  <p>Evidence from Logs: AssertionError: Expected: Payment Successful, Actual: Payment Failed</p>
+  <p>Recommendation: Validate payment response handling</p>
+  <p>Priority: <span class="priority-medium">MEDIUM</span></p>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h3>test_search_product</h3>
+  </div>
+  <p>Failure Type: Locator Failure</p>
+  <p>Root Cause: Search textbox locator not found</p>
+  <p>Evidence from Logs: NoSuchElementException: Unable to locate element: //*[@id='search-input']</p>
+  <p>Recommendation: Update locator strategy</p>
+  <p>Priority: <span class="priority-high">HIGH</span></p>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h3>test_user_profile_update</h3>
+  </div>
+  <p>Failure Type: API Issue</p>
+  <p>Root Cause: 500 Internal Server Error from profile API</p>
+  <p>Evidence from Logs: HTTP 500 Internal Server Error, API Endpoint: /api/profile/update</p>
+  <p>Recommendation: Investigate API issue and update test</p>
+  <p>Priority: <span class="priority-high">HIGH</span></p>
+</div>
+<div class="card">
+  <div class="card-header">
+    <h3>test_add_to_cart</h3>
+  </div>
+  <p>Failure Type: Flaky Test</p>
+  <p>Root Cause: Test passed on retry attempt</p>
+  <p>Evidence from Logs: Test failed in first attempt, Test passed in retry</p>
+  <p>Recommendation: Investigate flaky test behavior and update test</p>
+  <p>Priority: <span class="priority-low">LOW</span></p>
+</div>
+
+<h2>Flaky Test Detection</h2>
+<ul>
+  <li>test_add_to_cart: Test passed on retry attempt, indicating flaky behavior</li>
+  <li>Rety success/failure behavior: Test failed in first attempt, Test passed in retry</li>
+  <li>Intermittent behavior indicators: None</li>
+  <li>Stability concerns: Moderate</li>
+</ul>
+
+<h2>Recommendations</h2>
+<ul>
+  <li>Improve synchronization handling for UI tests</li>
+  <li>Enhance assertion validation for payment tests</li>
+  <li>Update locator strategy for search tests</li>
+  <li>Investigate API issue and update test for profile tests</li>
+  <li>Investigate flaky test behavior and update test for cart tests</li>
+</ul>
+
+<h2>QA Insights</h2>
+<ul>
+  <li>Critical risk areas: UI synchronization, payment validation, API issues</li>
+  <li>Most unstable modules: Authentication, Checkout, Search</li>
+  <li>Failure trends: UI issues, assertion failures, API issues</li>
+  <li>Quality concerns: Moderate, with some tests experiencing stability issues</li>
+  <li>Execution health assessment: Moderate, with some tests requiring updates and improvements</li>
+</ul>
+</body>
+</html></p>
+            </body>
+            </html>
+            
